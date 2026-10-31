@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafin Aku Ya... ❤️</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Pastikan file 'background.jpg' ada di folder yang sama */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            min-height: 80vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.8s ease-in-out;
+            padding: 20px 0;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 3.5rem;
+            color: #ffb6c1;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #ff4757;
+            transform: scale(1.05);
+        }
+
+        .scroll-section {
+            display: none;
+            padding: 40px 0;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .scroll-section.active {
+            display: block;
+        }
+
+        .photo-frame {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .photo-frame p {
+            margin-top: 15px;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 10px 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO LATAR BELAKANG -->
+    <audio id="bgMusic" loop>
+        <source src="lagu1.mp3" type="audio/mpeg">
+        Browsermu tidak mendukung pemutar audio.
+    </audio>
+
+    <!-- Tombol Kontrol Musik -->
+    <div class="music-control" onclick="toggleMusic()">
+        🎵 <span id="musicStatus">Putar Musik</span>
+    </div>
+
+    <div class="container">
+
+        <!-- HALAMAN 1 -->
+        <div class="page active" id="page1">
+            <h1>Maafin Aku Ya...</h1>
+            <p>
+                Hai sayang... Aku tahu aku udah buat salah dan bikin kamu kecewa. Lewat halaman kecil ini, aku mau minta maaf yang sebesar-besarnya dari lubuk hatiku yang paling dalam. Tolong baca sampai selesai ya sayang...
+            </p>
+            <button class="btn" onclick="nextPage(2)">Lanjut Baca ❤️</button>
+        </div>
+
+        <!-- HALAMAN 2 -->
+        <div class="page" id="page2">
+            <h1>Aku Menyesal</h1>
+            <p>
+                Aku tahu kata "maaf"  aja nggak akan langsung menghapus rasa sakit dan air mata yang udah aku sebabkan. Tapi aku bener-bener minta maaf atas  kesalahan aku,Aku janji bakal belajar dari kesalahan ini dan berusaha keras supaya hal seperti ini nggak terulang lagi. Minta tolong bimbing aku ya, dan beri aku kesempatan buat membuktikannya.
+            </p>
+            <button class="btn" onclick="nextPage(3)">Buka Pesan Terakhir & Kenangan Kita ✨</button>
+        </div>
+
+        <!-- HALAMAN 3 (SCROLL FOTO) -->
+        <div class="scroll-section" id="page3">
+            <h1>Our Memories</h1>
+            <p style="margin-bottom: 20px;">Scroll ke bawah untuk lihat foto-foto cantikkkuuu❤️</p>
+            
+            <!-- FOTO 1 -->
+            <div class="photo-frame">
+                <img src="foto1.jpeg" alt="Kenangan 1" onerror="this.src='https://via.placeholder.com/400x300?text=Foto+1+Tidak+Ditemukan'">
+                <p>Liat deh wajah kamu yang cantik.So pretty</p>
+            </div>
+
+            <!-- FOTO 2 -->
+            <div class="photo-frame">
+                <img src="foto2.jpeg" alt="Kenangan 2" onerror="this.src='https://via.placeholder.com/400x300?text=Foto+2+Tidak+Ditemukan'">
+                <p>Tcoba liat juga ini mata kamu yang begitu indah yang.</p>
+            </div>
+            
+                        <div class="photo-frame">
+                <img src="foto3.jpeg" alt="Kenangan 2" onerror="this.src='https://via.placeholder.com/400x300?text=Foto+3+Tidak+Ditemukan'">
+                <p>LIhat juga ini pose andalan kamu,Look like at angel.</p>
+            </div>
+
+                        <div class="photo-frame">
+                <img src="foto4.jpeg" alt="Kenangan 2" onerror="this.src='https://via.placeholder.com/400x300?text=Foto+4+Tidak+Ditemukan'">
+                <p>Liat deh bidadari  lagi selfie </p>
+            </div>
+
+                        <div class="photo-frame">
+                <img src="foto5.jpeg" alt="Kenangan 2" onerror="this.src='https://via.placeholder.com/400x300?text=Foto+5+Tidak+Ditemukan'">
+                <p>Terima kasih sudah sabar sama aku selama ini. Kamu adalah rumah terbaik buat aku pulang.</p>
+            </div>
+
+
+
+
+            <!-- PESAN PENUTUP -->
+            <div class="photo-frame" style="background: rgba(255, 107, 129, 0.2);">
+                <h2 style="font-family: 'Sacramento', cursive; color: #ffb6c1; font-size: 2.5rem; margin-bottom: 10px;">Maafin Aku Ya?</h2>
+                <p>
+                    Aku janji bakal jadi versi yang lebih baik lagi buat kamu. Semoga kamu mau memaafkan aku ya, sayang. I love you so much! ❤️
+                </p>
+            </div>
+            
+            <button class="btn" onclick="resetPage()">Kembali ke Awal 🔄</button>
+        </div>
+
+    </div>
+
+    <script>
+        function nextPage(pageNumber) {
+            // Sembunyikan semua halaman
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page3').classList.remove('active');
+
+            if (pageNumber === 3) {
+                document.getElementById('page3').classList.add('active');
+            } else {
+                const targetPage = document.getElementById('page' + pageNumber);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetPage() {
+            document.getElementById('page3').classList.remove('active');
+            document.getElementById('page1').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const music = document.getElementById('bgMusic');
+        const musicStatus = document.getElementById('musicStatus');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicStatus.innerText = "Putar Musik";
+                isPlaying = false;
+            } else {
+                music.play().then(() => {
+                    musicStatus.innerText = "Matikan Musik";
+                    isPlaying = true;
+                }).catch(e => {
+                    alert("Gagal memutar musik. Pastikan file 'lagu.mp3' sudah ada di folder yang sama!");
+                });
+            }
+        }
+    </script>
+</body>
+</html>
